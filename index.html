@@ -1,0 +1,307 @@
+<!-- 05-06 Imágenes
+En esta práctica debes ingresar varias imágenes en una página web y comparar el tiempo de carga hasta minimizarlo por completo.
+Utiliza sitios libres de derechos para descargar 12 imágenes con la resolución más alta posible. Incluye formatos JPG, GIF y PNG. 
+Crear una página web para organizar las imágenes usando el modelo flexbox, de modo que quepan dos imágenes por ancho.Obtendrás 6 filas de dos imágenes por fila. NO CAMBIAR EL TAMAÑO ORIGINAL.
+Agregue etiquetas ALT a todas las imágenes. Respeta el copyleft utilizando las etiquetas apropiadas para dar el crédito necesario al autor de la imagen.
+Crear un proyecto en Github y publicar la página. Siga el siguiente manual:https://docs.github.com/es/pages/getting-started-with-github-pages/creating-a-github-pages-site
+Usar herramientas de Google (https://pagespeed.web.dev/) para comprobar el tiempo de carga de la página, crear una tabla e indicar el tamaño medio, formato de imagen utilizado y tiempo de carga.Agregue la tabla a la página web.
+
+CAPTURA EL PRIMER PANTALLAZO
+
+COPIAR LA PÁGINA WEB EN OTRA.Optimiza el tamaño Y EL FORMATO (INVESTIGA SOBRE NUEVOS FORMATOS) de las imágenes. Utiliza etiquetas PICTURE, SRCSET y MEDIA para incluir distintos tamaños y formatos de imagen.  Realiza nuevamente la prueba de tiempo de carga y actualiza los datos de la tabla.
+COPIA LA ÚLTIMA PÁGINA WEB EN OTRA.Ahora seguiremos los consejos de la página de Google. en cuanto a formatos.Puedes utilizar la herramienta gráfica que quieras para configurarlos, a modo de ejemplo aquí tienes varias: https://www.dosmedia.com/tratamiento-de-imagenes-para-tu-pagina-web/
+Aplicación de Estilos CSS:
+Usar object-fit y object-position para asegurar que las imágenes se muestren correctamente en su contenedor.
+Implementar srcset y sizes en las imágenes para hacerlas responsivas en diferentes tamaños de pantalla.
+Utilizar la etiqueta <picture> para algunas imágenes, ofreciendo diferentes formatos según el navegador.
+Efectos Visuales Adicionales:
+Aplicar diferentes filters a algunas imágenes para cambiar su apariencia (por ejemplo, sepia, grayscale).
+Utilizar opacity en algunas imágenes para crear un efecto de transparencia.
+Implementar clip-path en al menos una imagen para darle una forma única.
+Añadir border-image a alguna imagen para mostrar cómo se puede usar una imagen como borde.
+Responsividad:
+Asegurarse de que la galería se vea bien en diferentes tamaños de pantalla, incluyendo teléfonos móviles y tablets.
+Interactividad:
+Agregar interactividad con JavaScript, cómo cambiar la opacidad o el filtro al pasar el mouse sobre las imágenes.
+ENTREGA:  una sóla imagen con DOS capturas de pantalla de Google Insight, una antes de optimizar y otra después   (junta las dos en una sola) y un  sólo  documento  HTML con el código final. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: lightcoral;
+        }
+
+        .container {
+            width: 48%;
+            margin: 1%;
+            
+      
+        }
+
+        img {
+            width: 100%;
+            box-sizing: border-box;
+            object-fit: cover;
+            object-position: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .tabla {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .tabla th,
+        .tabla td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .footer{
+            text-align: center;
+            font-size: 30px;
+            margin-top: 20px;
+            background-color: cadetblue;
+            border-radius: 10px;
+        }
+
+    
+
+        /* EFECTOS */
+        img.sepia {
+            filter: sepia(70%);
+        }
+
+        img.grayscale {
+            filter: grayscale(100%);
+        }
+
+        img.opacidad {
+            opacity: 0.5;
+        }
+
+        img.opacidad-dos {
+            opacity: 0.7;
+        }
+
+        img.recorte {
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        }
+
+        img.borde-imagen {
+            border-width: 100px;
+            border-image-source: url('./img/balon.webp');
+            border-image-slice: 20;
+            border-image-repeat: stretch;
+        }
+
+        /* RESPONSIVIDAD */
+        @media only screen and (max-width: 600px) {
+            .imagen-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <br>
+    <div class="container"> 
+       
+            <picture>
+           <source srcset="./img/dubai.webp" class="opacidad" type="image/webp">
+           <img  src="./img/dubai.jpg" alt="dubai" />
+           <figcaption class="texto">Foto de bulletrain743 <a
+            href="https://pixabay.com/es/photos/dubai-rascacielos-luces-de-la-ciudad-1767540/"> PÁGINA </a> </figcaption>
+           </picture>
+    </div>   
+   
+   
+    <div class="container">
+           <picture>
+           <source srcset="./img/full.webp" class="sepia" type="image/webp">
+           <img src="./img/full.jpg" alt="full" />
+           <figcaption class="texto">Foto de ennelise <a href="https://pixabay.com/es/photos/hojas-de-rosa-sale-de-mojado-733739/">PÁGINA</a></figcaption>
+           </picture>
+    
+    </div>        
+
+     <br/>
+     <br/>
+
+    <div class="container"> 
+ 
+       <picture>
+           <source srcset="./img/hasbulla.webp" class="borde-imagen" type="image/webp">
+           <img class="grayscale" src="./img/hasbulla.jpg" alt="hasbulla" />
+           <figcaption class="texto">Foto de Mavier <a
+            href="https://tenor.com/es/view/hello-selam-selam%C3%BCn-aleyk%C3%BCm-merhaba-hasbulla-gif-13287565562184374433"> PÁGINA </a>
+           </figcaption>
+            <br/>
+        </picture>
+          
+    </div>       
+      
+      
+    <div class="container"> 
+  
+       <picture>
+           <source srcset="./img/images.webp" type="image/webp">
+           <img src="./img/images.jpg" class="recorte" alt="images" />
+           <figcaption class="texto">Foto de google <a href="#"> PÁGINA </a></figcaption>
+           <br/>
+        </picture>
+        
+    </div>
+      
+      
+    <div class="container"> 
+  
+       <picture>
+           <source srcset="./img/newyork.webp" type="image/webp">
+           <img src="./img/newyork.jpg" class="borde-imagen"  alt="newyork" />
+           <figcaption class="texto">Foto de HilarioPhotography <a
+            href="https://pixabay.com/es/photos/urbano-newyork-city-ciudad-nyc-4040696/"> PÁGINA </a></figcaption>
+            <br/>
+        </picture>
+    </div> 
+      
+      
+    <div class="container"> 
+  
+        <picture>
+           <source srcset="./img/newyork2.webp" type="image/webp">
+           <img src="./img/newyork2.jpg" class="recorte"  alt="newyork2" />
+           <figcaption class="texto">Foto de KnutEgil1966 <a
+            href="https://pixabay.com/es/photos/newyork-ee-uu-nyc-rascacielos-3929104/"> PÁGINA </a></figcaption>
+            <br/>
+        </picture>
+    
+    </div>  
+      
+      
+    <div class="container"> 
+  
+        <picture>
+           <source srcset="./img/locura.webp" class="opacidad-dos" type="image/webp">
+           <img src="./img/locura.webp" alt="locura" />
+           <figcaption class="texto">Foto de Elisa Gil Gasset <a
+            href="https://tenor.com/es/view/nina-bailando-nina-bailando-dancing-baby-cute-baby-gif-12237796794363240118"> PÁGINA
+            </a></figcaption>
+            <br/>
+       </picture>
+  
+    </div>  
+      
+      
+    <div class="container"> 
+  
+       <picture>
+           <source srcset="./img/balon.webp" class="recorte" type="image/webp">
+           <img src="./img/balon.jpg"  class="recorte" alt="balon" />
+           <figcaption class="texto">Foto de jossuetrejo_oficial <a
+            href="https://pixabay.com/es/photos/comida-viejo-ornamento-antiguo-old-3263812/"> PÁGINA </a></figcaption>
+            <br/>
+       </picture>
+    
+    </div> 
+     
+     
+    <div class="container"> 
+ 
+        <picture>
+           <source srcset="./img/street.webp" class="opacidad-dos" type="image/webp">
+           <img src="./img/street.jpg" alt="street" />
+           <figcaption class="texto">Foto de PublicDomainPictures <a
+            href="https://pixabay.com/es/photos/callej%C3%B3n-calle-noche-velada-tarde-89197/"> PAGINA </a></figcaption>
+            <br/>
+       </picture>
+    
+    </div>  
+      
+    <div class="container"> 
+  
+      
+        <picture>
+           <source srcset="./img/street2.webp" class="opacidad-dos" type="image/webp">
+           <img src="./img/street2.jpg" alt="street2" />
+           <figcaption class="texto">Foto de PublicDomainPictures <a
+            href="https://pixabay.com/es/photos/iglesia-interior-banco-de-iglesia-316780/"> PAGINA </a></figcaption>
+            <br/>
+        </picture>
+    </div>   
+     
+    <div class="container"> 
+ 
+     
+        <picture>
+           <source srcset="./img/tree.webp" type="image/webp">
+           <img src="./img/tree.jpg" class="recorte" alt="tree" />
+           <figcaption class="texto">Foto de bertvthul <a
+            href="https://pixabay.com/es/photos/avenida-%C3%A1rboles-sendero-815297/"> PAGINA </a></figcaption>
+            <br/>
+       </picture>
+     
+
+    </div>
+
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>General</th>
+                <th>Tamaño Medio</th>
+                <th>Formato</th>
+                <th>Tiempo de Carga </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Imagenes</td>
+                <td>578 KB</td>
+                <td>JPG, JPEG</td>
+                <td>4.9 segundos</td>
+            </tr>
+
+            <tr>
+                <td>Imagenes 2º pagina</td>
+                <td>221 KB</td>
+                <td>WEBP</td>
+                <td>1.6 segundos</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer class="footer">
+        <p><strong> HECHO POR IGNACIO AGUAYO </strong></p>
+    </footer>
+</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const images = document.querySelectorAll("img");
+
+            images.forEach(img => {
+                img.addEventListener("mouseover", function () {
+                    this.style.opacity = "0.8";
+                });
+
+                img.addEventListener("mouseout", function () {
+                    this.style.opacity = "1";
+                });
+            });
+        });
+    </script>
+
+
+</html>
+
